@@ -30,7 +30,7 @@ class Parent {
 	}
 
 	void testMethod() {
-		System.out.println("부모 클래스의 테스트 메서드");
+		System.out.println("(부모 클래스) 테스트 메서드");
 	}
 	
 }
@@ -50,6 +50,16 @@ class Child extends Parent {
 		System.out.println("(C-추가) 자녀 클래스의 추가된 생성자 실행");
 	}
 	
+	void testMethod() {
+		System.out.println("(자녀 클래스) 테스트 메서드");
+	}
+	
+	void callMethod() {
+		super.testMethod();	// 부모의 testMethod 호출
+		this.testMethod();	// 자신의 testMethod 호출
+		testMethod();	// 자신의 testMethod 호출 (this는 보통 생략한다.)
+	}
+	
 }
 
 public class TechniqueEx08 {
@@ -65,8 +75,9 @@ public class TechniqueEx08 {
 		new Child();
 		System.out.println();
 			
-		new Child("제임스고슬링 주니어", 40);
+		Child test = new Child("제임스고슬링 주니어", 40);
 		System.out.println();
+		test.callMethod();
 		
 	}
 
